@@ -1,3 +1,5 @@
-module.exports = (a, b) => {
-  return a + b
+const Ware = require('./ware')
+
+module.exports = function genWare() {
+  return new Ware()
 }

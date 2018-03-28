@@ -1,5 +1,18 @@
-const testModule = require('../src/index')
+const ware = require('../src/index')
 
-test('test module', () => {
-  expect(testModule(1, 2)).toBe(3)
+test('ware example1', () => {
+  // expect(1).toBe(1)
+  const middleware = ware()
+    .use(function(obj, next) {
+      obj.a = 1
+      next()
+    })
+    .use(function(obj, next) {
+      obj.b = 2
+      next()
+    })
+
+  middleware.run({}, function(obj) {
+    expect(obj.a + obj.b).toBe(3)
+  })
 })
